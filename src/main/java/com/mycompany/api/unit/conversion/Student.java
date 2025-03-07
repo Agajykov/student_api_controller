@@ -1,8 +1,15 @@
 package com.mycompany.api.unit.conversion;
 
+import java.util.Objects;
+
 public class Student {
 
 	public Student() {
+	}
+	
+	public Student(Integer id) {
+		super();
+		this.id = id;
 	}
 
 	public Student(String name) {
@@ -33,5 +40,22 @@ public class Student {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		return Objects.equals(id, other.id);
 	}
 }
